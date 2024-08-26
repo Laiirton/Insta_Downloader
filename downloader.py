@@ -41,6 +41,7 @@ def download_video(url, save_path, format):
         filepath = os.path.join(save_path, filename)
         
         response = requests.get(video_url, stream=True)
+        response.raise_for_status()  # Adiciona tratamento de exceções para problemas de rede
         total_size = int(response.headers.get('content-length', 0))
         block_size = 1024  # 1 KB
         downloaded_size = 0
@@ -79,6 +80,8 @@ def download_video(url, save_path, format):
         return f"Erro: {str(ve)}"
     except InvalidArgumentException:
         return "Erro: Post não encontrado ou privado."
+    except requests.RequestException as re:
+        return f"Erro de rede: {str(re)}"
     except Exception as e:
         return f"Erro ao baixar o {'áudio' if format == 'audio' else 'vídeo'}: {str(e)}"
 
@@ -92,4 +95,3 @@ if __name__ == "__main__":
     format = sys.argv[3]
     result = download_video(url, save_path, format)
     print(result)  # Isso imprimirá apenas a mensagem de sucesso ou erro
-

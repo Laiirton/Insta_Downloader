@@ -18,6 +18,14 @@ def extract_shortcode(url):
     else:
         raise ValueError("URL inválida do Instagram")
 
+def generate_unique_filename(save_path, base_filename, extension):
+    counter = 1
+    new_filename = f"{base_filename}.{extension}"
+    while os.path.exists(os.path.join(save_path, new_filename)):
+        new_filename = f"{base_filename}_{counter}.{extension}"
+        counter += 1
+    return new_filename
+
 def download_video(url, save_path, format):
     L = instaloader.Instaloader(dirname_pattern=save_path,
                                 download_video_thumbnails=False,
@@ -37,8 +45,9 @@ def download_video(url, save_path, format):
         
         # Baixar o vídeo manualmente
         video_url = post.video_url
-        filename = f"{post.owner_username}_{post.date_utc:%Y-%m-%d_%H-%M-%S}.mp4"
-        filepath = os.path.join(save_path, filename)
+        base_filename = f"{post.owner_username}_{post.date_utc:%Y-%m-%d_%H-%M-%S}"
+        temp_filename = generate_unique_filename(save_path, base_filename, "mp4")
+        filepath = os.path.join(save_path, temp_filename)
         
         response = requests.get(video_url, stream=True)
         response.raise_for_status()  # Adiciona tratamento de exceções para problemas de rede
@@ -55,25 +64,19 @@ def download_video(url, save_path, format):
         
         if format == 'audio':
             # Converter para áudio
-            audio_path = os.path.join(save_path, f"{post.owner_username}.mp3")
+            base_audio_filename = f"{post.owner_username}"
+            new_filename = generate_unique_filename(save_path, base_audio_filename, "mp3")
+            audio_path = os.path.join(save_path, new_filename)
             video = mp.VideoFileClip(filepath)
             video.audio.write_audiofile(audio_path)
             video.close()
             os.remove(filepath)
-            new_filename = f"{post.owner_username}.mp3"
         else:
             # Manter como vídeo
-            new_filename = f"{post.owner_username}.mp4"
+            new_filename = generate_unique_filename(save_path, base_filename, "mp4")
             new_path = os.path.join(save_path, new_filename)
             os.rename(filepath, new_path)
         
-        # Remover outros arquivos
-        for file in os.listdir(save_path):
-            if file != new_filename:
-                try:
-                    os.remove(os.path.join(save_path, file))
-                except PermissionError:
-                    pass
         
         return f"{'Áudio' if format == 'audio' else 'Vídeo'} baixado com sucesso: {new_filename}"
     except ValueError as ve:

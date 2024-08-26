@@ -9,10 +9,15 @@ const progressBar = document.getElementById('progress-bar');
 let savePath = '';
 
 selectDirectoryButton.addEventListener('click', async () => {
-  savePath = await window.electronAPI.selectDirectory();
-  if (savePath) {
-    statusElement.textContent = `Diretório selecionado: ${savePath.split('\\').pop()}`;
-    selectDirectoryButton.textContent = 'Mudar diretório';
+  try {
+    savePath = await window.electronAPI.selectDirectory();
+    if (savePath) {
+      statusElement.textContent = `Diretório selecionado: ${savePath.split('\\').pop()}`;
+      selectDirectoryButton.textContent = 'Mudar diretório';
+    }
+  } catch (error) {
+    console.error('Erro ao selecionar diretório:', error);
+    statusElement.textContent = 'Erro ao selecionar diretório.';
   }
 });
 

@@ -41,19 +41,16 @@ downloadButton.addEventListener('click', async () => {
   }
 });
 
-// Adicionar validação de URL em tempo real
 urlInput.addEventListener('input', () => {
   const url = urlInput.value.trim();
   const isValidUrl = /^https?:\/\/(www\.)?instagram\.com\/(p|reel|tv)\/[\w-]+\/?/.test(url);
   downloadButton.disabled = !isValidUrl;
 });
 
-// Adicionar listener para atualizações de progresso
 window.electronAPI.onDownloadProgress((progress) => {
   progressBar.style.width = `${progress}%`;
 });
 
-// Adicione isso no final do arquivo
 document.getElementById('github-link').addEventListener('click', (event) => {
   event.preventDefault();
   window.electronAPI.openExternalLink('https://github.com/Laiirton');
@@ -63,14 +60,6 @@ document.getElementById('botao-fechar').addEventListener('click', () => {
   window.electronAPI.closeApp();
 });
 
-// Remova o listener do botão de minimizar
-/*
-document.getElementById('botao-minimizar').addEventListener('click', () => {
-  window.electronAPI.minimizeApp();
-});
-*/
-
-// Adicione esta função no início do arquivo
 function addDragHandler(element) {
   let isDragging = false;
   let startX, startY;
@@ -94,7 +83,6 @@ function addDragHandler(element) {
   });
 }
 
-// Adicione esta linha após o carregamento do DOM
 document.addEventListener('DOMContentLoaded', () => {
   addDragHandler(document.querySelector('.container'));
 });

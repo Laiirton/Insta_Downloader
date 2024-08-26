@@ -93,4 +93,3 @@ if __name__ == "__main__":
     result = download_video(url, save_path, format)
     print(result)  # Isso imprimirá apenas a mensagem de sucesso ou erro
 
-

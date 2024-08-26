@@ -2,7 +2,7 @@
   --primary-color: #8e44ad;
   --secondary-color: #3498db;
   --accent-color: #e74c3c;
-  --text-color: #ffffff; /* Alterado para branco para melhor contraste */
+  --text-color: #ffffff;
   --button-hover-color: #9b59b6;
   --input-bg-color: rgba(255, 255, 255, 0.15);
   --input-border-color: rgba(142, 68, 173, 0.7);
@@ -16,7 +16,7 @@ body, html {
   color: var(--text-color);
   height: 100vh;
   overflow: hidden;
-  background: none; /* Remova o background aqui */
+  background: none;
   border-radius: var(--border-radius);
 }
 
@@ -24,8 +24,8 @@ body, html {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  backdrop-filter: blur(1px); /* Reduz o blur de 5px para 2px */
-  background-color: rgba(0, 0, 0, 0.7); /* Aumentado a opacidade para melhor contraste */
+  backdrop-filter: blur(1px);
+  background-color: rgba(0, 0, 0, 0.7);
   position: relative;
   border-radius: var(--border-radius);
   overflow: hidden;
@@ -50,7 +50,7 @@ body, html {
   font-family: 'Orbitron', sans-serif;
   font-weight: bold;
   font-size: 1.2em;
-  text-shadow: 0 0 10px rgba(52, 152, 219, 1); /* Aumentado a opacidade da sombra */
+  text-shadow: 0 0 10px rgba(52, 152, 219, 1);
 }
 
 .close-button {
@@ -91,7 +91,7 @@ h1 {
   margin-bottom: 30px;
   font-size: 2.5em;
   text-align: center;
-  text-shadow: 0 0 15px rgba(142, 68, 173, 1); /* Aumentado a opacidade da sombra */
+  text-shadow: 0 0 15px rgba(142, 68, 173, 1);
 }
 
 .input-group, .button-group {
@@ -112,7 +112,7 @@ input[type="text"] {
 }
 
 input[type="text"]::placeholder {
-  color: rgba(236, 240, 241, 1); /* Aumentado a opacidade do placeholder */
+  color: rgba(236, 240, 241, 1);
 }
 
 input[type="text"]:focus {
@@ -153,13 +153,12 @@ input[type="text"]:focus {
   font-family: 'Orbitron', sans-serif;
   color: var(--secondary-color);
   font-size: 1.1em;
-  text-shadow: 0 0 10px rgba(52, 152, 219, 1); /* Aumentado a opacidade da sombra */
+  text-shadow: 0 0 10px rgba(52, 152, 219, 1);
   padding: 10px;
   border-radius: 5px;
   margin-top: 15px;
 }
 
-/* Scrollbar personalizada */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -195,7 +194,6 @@ input[type="text"]:focus {
   margin-right: 5px;
 }
 
-/* Estilo personalizado para os radio buttons */
 .format-selection input[type="radio"] {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -260,7 +258,7 @@ input[type="text"]:focus {
   font-size: 0.9em;
   color: var(--text-color);
   margin-right: 10px;
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Adicionado sombra para melhor contraste */
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .creator-info a {
@@ -281,16 +279,14 @@ input[type="text"]:focus {
 .github-icon {
   fill: var(--text-color);
   transition: fill 0.3s ease;
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Adicionado sombra para melhor contraste */
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .creator-info a:hover .github-icon {
   fill: var(--primary-color);
 }
 
-/* Ajuste o padding do .content para dar espaço à informação do criador */
 .content {
-  /* ... (mantenha as outras propriedades) ... */
   padding-bottom: 50px;
 }
 

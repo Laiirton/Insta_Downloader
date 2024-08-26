@@ -313,7 +313,7 @@ input[type="text"]:focus {
   width: 100vw;
   border-radius: var(--border-radius);
   overflow: hidden;
-  background: url('./download.gif') center center / cover no-repeat fixed;
+  background: url('./assets/download.gif') center center / cover no-repeat fixed;
 }
 
 #botao-fechar {

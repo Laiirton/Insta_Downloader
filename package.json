@@ -6,11 +6,19 @@
   "author": "Lairton",
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder"
+    "build": "electron-builder",
+    "lint": "eslint .",
+    "test": "jest"
+  },
+  "dependencies": {
+    "moviepy": "^1.0.3",
+    "requests": "^2.25.1"
   },
   "devDependencies": {
     "electron": "^13.0.0",
-    "electron-builder": "^23.6.0"
+    "electron-builder": "^23.6.0",
+    "eslint": "^7.32.0",
+    "jest": "^27.0.6"
   },
   "build": {
     "appId": "com.lairton.instadownloader",

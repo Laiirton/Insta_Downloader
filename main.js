@@ -44,7 +44,8 @@ app.on('activate', () => {
 
 ipcMain.handle('download-video', async (event, url, savePath, format) => {
   return new Promise((resolve, reject) => {
-    const pythonProcess = spawn('python', ['downloader.py', url, savePath, format], {
+    const pythonScriptPath = path.join(process.resourcesPath, 'downloader.py');
+    const pythonProcess = spawn('python', [pythonScriptPath, url, savePath, format], {
       env: { ...process.env, PYTHONIOENCODING: 'utf-8' },
       stdio: ['ignore', 'pipe', 'pipe']
     });
@@ -67,7 +68,6 @@ ipcMain.handle('download-video', async (event, url, savePath, format) => {
 
     pythonProcess.on('close', (code) => {
       if (code === 0) {
-        // Modificar esta parte para capturar tanto mensagens de áudio quanto de vídeo
         const successMessage = output.match(/(Áudio|Vídeo) baixado com sucesso: .+\.(mp3|mp4)/);
         if (successMessage) {
           resolve(successMessage[0]);

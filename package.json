@@ -4,6 +4,7 @@
   "description": "Aplicativo para download de vídeos do Instagram",
   "main": "main.js",
   "author": "Lairton",
+  "license": "MIT",
   "scripts": {
     "start": "electron .",
     "build": "electron-builder",

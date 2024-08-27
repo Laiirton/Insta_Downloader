@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import sys
 import os
 import re
@@ -86,6 +88,7 @@ def download_video(url, save_path, format):
     except requests.RequestException as re:
         return f"Erro de rede: {str(re)}"
     except Exception as e:
+        print(f"Erro ao baixar o {'áudio' if format == 'audio' else 'vídeo'}: {str(e)}", file=sys.stderr)
         return f"Erro ao baixar o {'áudio' if format == 'audio' else 'vídeo'}: {str(e)}"
 
 if __name__ == "__main__":

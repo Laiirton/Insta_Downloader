@@ -48,7 +48,7 @@ downloadButton.addEventListener('click', async () => {
 
 urlInput.addEventListener('input', () => {
   const url = urlInput.value.trim();
-  const isValidUrl = /^https?:\/\/(www\.)?instagram\.com\/(p|reel|tv)\/[\w-]+\/?/.test(url);
+  const isValidUrl = /^https?:\/\/(www\.)?instagram\.com\/(p|reel|reels)\/[\w-]+\/?(\?.*)?$/.test(url);
   downloadButton.disabled = !isValidUrl;
 });
 

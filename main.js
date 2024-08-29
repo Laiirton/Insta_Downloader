@@ -44,7 +44,7 @@ app.on('activate', () => {
 
 ipcMain.handle('download-video', async (event, url, savePath, format) => {
   return new Promise((resolve, reject) => {
-    const pythonScriptPath = path.join(process.resourcesPath, 'downloader.py');
+    const pythonScriptPath = path.join(__dirname, 'downloader.py');
     const pythonProcess = spawn('python', [pythonScriptPath, url, savePath, format], {
       env: { ...process.env, PYTHONIOENCODING: 'utf-8' },
       stdio: ['ignore', 'pipe', 'pipe']

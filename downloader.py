@@ -12,8 +12,8 @@ import moviepy.editor as mp
 import requests
 
 def extract_shortcode(url):
-    # Padrão para extrair o shortcode da URL
-    pattern = r'(?:https?:\/\/)?(?:www\.)?(?:instagram\.com|instagr\.am)\/(?:p|reel|tv)\/([^\/?]+)'
+    # Padrão atualizado para extrair o shortcode da URL
+    pattern = r'(?:https?:\/\/)?(?:www\.)?(?:instagram\.com)\/(?:p|reel|reels)\/([^\/?]+)'
     match = re.search(pattern, url)
     if match:
         return match.group(1)
@@ -99,5 +99,9 @@ if __name__ == "__main__":
     url = sys.argv[1]
     save_path = sys.argv[2]
     format = sys.argv[3]
-    result = download_video(url, save_path, format)
-    print(result)  # Isso imprimirá apenas a mensagem de sucesso ou erro
+    try:
+        result = download_video(url, save_path, format)
+        print(result)
+    except Exception as e:
+        print(f"Erro: {str(e)}", file=sys.stderr)
+        sys.exit(1)

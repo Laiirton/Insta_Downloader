@@ -44,8 +44,8 @@ app.on('activate', () => {
 
 ipcMain.handle('download-video', async (event, url, savePath, format) => {
   return new Promise((resolve, reject) => {
-    const pythonScriptPath = path.join(__dirname, 'downloader.py');
-    const pythonProcess = spawn('python', [pythonScriptPath, url, savePath, format], {
+    const pythonExecutable = process.env.NODE_ENV === 'development' ? 'python' : path.join(process.resourcesPath, 'downloader.exe'); // Use o executável gerado pelo PyInstaller
+    const pythonProcess = spawn(pythonExecutable, [url, savePath, format], {
       env: { ...process.env, PYTHONIOENCODING: 'utf-8' },
       stdio: ['ignore', 'pipe', 'pipe']
     });

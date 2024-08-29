@@ -37,8 +37,8 @@
     ],
     "extraResources": [
       {
-        "from": "downloader.py",
-        "to": "downloader.py"
+        "from": "dist/downloader.exe",
+        "to": "downloader.exe"
       }
     ],
     "win": {

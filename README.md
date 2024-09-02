@@ -25,21 +25,7 @@ Insta Downloader é um aplicativo de desktop para baixar vídeos e áudios do In
 
 ## Instalação
 
-1. Clone o repositório:
-   ```
-   git clone https://github.com/seu-usuario/insta-downloader.git
-   cd insta-downloader
-   ```
-
-2. Instale as dependências do Node.js:
-   ```
-   npm install
-   ```
-
-3. Instale as dependências Python:
-   ```
-   pip install instaloader moviepy requests
-   ```
+1. Baixe e instale a versão release, atualmente só tem suporte para windows.
 
 ## Uso
 

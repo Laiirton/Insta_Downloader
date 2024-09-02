@@ -46,4 +46,4 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 
 ## Autor
 
-Lairton - [GitHub](https://github.com/Lairton)
+Lairton 

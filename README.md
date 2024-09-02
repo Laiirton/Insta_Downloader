@@ -27,11 +27,6 @@ Insta Downloader é um aplicativo de desktop para baixar vídeos e áudios do In
 
 1. Baixe e instale a versão release, atualmente só tem suporte para windows.
 
-## Uso
-
-Para iniciar o aplicativo em modo de desenvolvimento:
-npm start
-
 ## Estrutura do Projeto
 
 - `main.js`: Arquivo principal do Electron
